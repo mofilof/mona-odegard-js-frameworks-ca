@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../constants/api";
 import SearchGames from "./SearchGames";
-//import GameProps from "./GameProps";
+import GameProps from "./GameProps";
 
 function GameList() {
 
@@ -44,14 +44,15 @@ function GameList() {
             return <div>No results</div>;
         }
         return filteredResults.map(function(result) {
-          const href = "/games/" + result.id;
+          const href = "/game/" + result.id;
             
 
     return (
-      <div className="flip-card">      
+      <>
+      <div key={result.name} className="flip-card">      
         <div className="flip-card-inner">
           <div className="flip-card-front">
-            <div key={result.name} className="gameCard">
+            <div className="gameCard">
               <div>
                 <h1 className="gameText">{result.name}</h1>
                   <img src={result.background_image} alt={result.name} />
@@ -62,14 +63,16 @@ function GameList() {
               </div>
             </div>
               <div className="flip-card-back">
+                
                 <h1 className="gameText">{result.name}</h1>
                   <img src={result.background_image} alt={result.name} />
                   <p className="gameText"><b>Rated top </b>{result.rating_top}</p>
-                  <a href={href}>Details</a>
+                  <a href={href}>Click this link for more information about {result.name}.</a>
+                  
               </div>
             </div>
           </div> 
-        
+        </>
             );
         });
     }

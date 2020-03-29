@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function GameInfo(props) {
+function GameProps(props) {
   return (
     <div>
       <h1>
@@ -23,4 +23,4 @@ function GameInfo(props) {
   );
 }
 
-export default GameInfo;
+export default GameProps;

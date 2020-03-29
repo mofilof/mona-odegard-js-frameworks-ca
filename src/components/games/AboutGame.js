@@ -15,7 +15,7 @@ function AboutGame() {
       .then(response => response.json())
       .then(json => {
         console.log("more", json);
-        setDetail(json.id.detail);
+        setDetail(json);
         setLoading(false);
       })
       .catch(error => console.log(error));
@@ -26,9 +26,9 @@ function AboutGame() {
     }
     
       return (
-        <div key={detail.id} className="more">
+        <div>
           <h1>{detail.name}</h1>
-        
+          <p>Description: {detail.description}</p>        
         </div>
     );
   }

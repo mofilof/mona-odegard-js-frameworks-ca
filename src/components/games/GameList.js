@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../constants/api";
 import SearchGames from "./SearchGames";
+//import GameProps from "./GameProps";
 
 function GameList() {
 
@@ -43,21 +44,36 @@ function GameList() {
             return <div>No results</div>;
         }
         return filteredResults.map(function(result) {
-            const href = "game/" + result.id;
+          const href = "/games/" + result.id;
+            
 
-            return (
-                <div key={result.name} className="gameCard">
-                  <div>
-                    <h1 className="gameText">{result.name}</h1>
-                    <img src={result.background_image} alt={result.name} />
-                    <p className="gameText"><b>Rating: </b>{result.rating}</p>
-                    <p className="gameText"><b>Release date: </b>{result.released}</p>
-                    <a className="gameText" href={href}>Read more here</a>
-                  </div>
+    return (
+      <div className="flip-card">      
+        <div className="flip-card-inner">
+          <div className="flip-card-front">
+            <div key={result.name} className="gameCard">
+              <div>
+                <h1 className="gameText">{result.name}</h1>
+                  <img src={result.background_image} alt={result.name} />
+                  <p className="gameText"><b>Rating: </b>{result.rating}</p>
+                  <p className="gameText"><b>Release date: </b>{result.released}</p>
+                  
                 </div>
+              </div>
+            </div>
+              <div className="flip-card-back">
+                <h1 className="gameText">{result.name}</h1>
+                  <img src={result.background_image} alt={result.name} />
+                  <p className="gameText"><b>Rated top </b>{result.rating_top}</p>
+                  <a href={href}>Details</a>
+              </div>
+            </div>
+          </div> 
+        
             );
         });
     }
+
     return (
         <div>
             <SearchGames doSearch={handleSearch} />
@@ -67,3 +83,4 @@ function GameList() {
 }
 
 export default GameList;
+
